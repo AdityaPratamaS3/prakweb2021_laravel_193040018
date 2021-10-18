@@ -3,6 +3,8 @@
 
 <h1 class="mb-5">{{ $post->title}}</h1>
 
+<p>By.Aditya pratama S <a href="/categories/{{ $post->category->name }}"></a></p>
+
 {!! $post->body !!}
 
 <a href="/blog">back to posts</a>
