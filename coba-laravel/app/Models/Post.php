@@ -8,7 +8,7 @@ use App\Models\Category;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     // protected $fillable = ['title','excerpt','body'];
 
@@ -52,5 +52,14 @@ class Post extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function(): array
+    {
+        return[
+            'slug' => [
+                'source' => 'title'
+            ]
+            ];
     }
 }
