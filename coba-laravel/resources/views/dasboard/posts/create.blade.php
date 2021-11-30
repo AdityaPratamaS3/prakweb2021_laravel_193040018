@@ -5,11 +5,11 @@
         <h1 class="h2">Create New Post</h1>
       </div>
 <div class="col-lg-8">
-    <form method="Post" action="/dashboard/posts" class="mb-5">
+    <form method="Post" action="/dashboard/posts" class="mb-5" enctype="multipart/form-data">
         @csrf
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control @error('title') is-invalid @enderrors" id="title" name="tite" required autofocus value="{{old('title')}}"> 
+        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="tite" required autofocus value="{{old('title')}}"> 
         @error('title')
         <div class="invalid-feddback">
           {{ $message }}
@@ -19,7 +19,7 @@
       </div>
       <div class="mb-3">
         <label for="slug" class="form-label">Slug</label>
-        <input type="text" class="form-control @error('slug') is-invalid @enderrors" id="slug" name="slug" required value="{{old('title')}}">
+        <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{old('title')}}">
         @error('slug')
         <div class="invalid-feddback">
           {{ $message }}
@@ -38,6 +38,15 @@
             @endforeach
         </select>
       </div>
+      <div class="mb-3">
+  <label for="image" class="form-label">Post Image</label>
+  <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+  @error('image')
+        <div class="invalid-feddback">
+          {{ $message }}
+        </div>
+        @enderror('title')
+</div>
       <div class="mb-3">
         <label for="Categorybosy" class="form-label">Body</label>
         @error('body')
