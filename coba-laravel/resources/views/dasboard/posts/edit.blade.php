@@ -5,7 +5,8 @@
         <h1 class="h2">Edit Post</h1>
       </div>
 <div class="col-lg-8">
-    <form method="Post" action="/dashboard/posts/{{ $post->slug }}" class="mb-5">
+    <form method="Post" action="/dashboard/posts/{{ $post->slug }}" class="mb-5" 
+    enctype="multipart/form-data">
       @method('put')
         @csrf
       <div class="mb-3">
@@ -39,6 +40,23 @@
             @endforeach
         </select>
       </div>
+
+      <div class="mb-3">
+  <label for="image" class="form-label">Post Image</label>
+  <input type="hidden" name="oldimage" value="{{ $post->image}}">
+  @if($post->image)
+  <img src="{{asser('storage/' . $post->image }}"class="img-preview img-fluid mb-3 col-sm-5 d-block">
+  @else
+  <img class="img-preview img-fluid mb-3 col-sm-5">
+  @endif
+  <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewimage">
+  @error('image')
+        <div class="invalid-feddback">
+          {{ $message }}
+        </div>
+        @enderror
+</div>
+
       <div class="mb-3">
         <label for="Categorybosy" class="form-label">Body</label>
         @error('body')
